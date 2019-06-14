@@ -1,12 +1,15 @@
+/**
+ * https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/#react-firebase-realtime-database
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Firebase, { FirebaseContext } from './components/Firebase';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from './components/App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+    <FirebaseContext.Provider value={new Firebase()}>
+        <App />
+    </FirebaseContext.Provider>,
+    document.getElementById('root'),
+);
