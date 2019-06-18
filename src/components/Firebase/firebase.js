@@ -1,5 +1,9 @@
-import app from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/firestore';
+//import firebase from "firebase";
+
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -12,8 +16,10 @@ const config = {
 
 class Firebase {
     constructor() {
-        app.initializeApp(config);
-        this.auth = app.auth();
+        firebase.initializeApp(config);
+        this.auth = firebase.auth();
+        this.db = firebase.firestore();
+
     }
 
     // *** Auth API ***
@@ -30,6 +36,47 @@ class Firebase {
 
     doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password);
+
+
+    // *** db ***
+
+    getdb = () => this.db;
+
+    // *** User API ***
+
+    // user = uid => this.db.ref(`users/${uid}`);
+    users = () => this.db.collection("users")
+    currentUser = () => this.auth.currentUser;
+
+    // *** Question API ***
+    questions = () => this.db.collection("questions").get()
+        .then((querySnapshot) => {
+            return querySnapshot.docs.map((doc) => {
+                return { data: doc.data(), id: doc.id };
+            });
+        })
+
+    doCreateQuestion = (questionText) => {
+        return this.db.collection("questions").add({
+            questionText,
+            uid: this.currentUser().uid
+        });
+    }
+
+    doDeleteQuestion = (id) => {
+        return this.db.collection("questions").doc(id).delete();
+    }
+
+    doUpVoteQuestion = (id) => {
+        var docRef = this.db.collection("questions").doc(id);
+        docRef.update({
+            "votes": firebase.firestore.FieldValue.arrayUnion(this.currentUser().uid)
+        });
+    }
+
+    doDownVoteQuestion = (questionText) => {
+        console.log('downvote')
+    }
 }
 
 export default Firebase;
