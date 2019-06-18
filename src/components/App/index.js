@@ -15,29 +15,30 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import * as ROUTES from '../../constants/routes';
+import AppBar from '@material-ui/core/AppBar';
 
 
 import { withAuthentication } from '../Session';
 
 const App = () => (
   <Router>
-    <div>
+    <AppBar position="static">
       <Navigation />
-      <hr />
+    </AppBar>
 
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
-      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-      <Route path={ROUTES.QUESTION_LEADERBOAD} component={QuestionLeaderboardPage} />
-      <Route
-        path={ROUTES.PASSWORD_FORGET}
-        component={PasswordForgetPage}
-      />
-      <Route path={ROUTES.HOME} component={HomePage} />
-      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.ADMIN} component={AdminPage} />
-      <Route path={ROUTES.ADD_QUESTION} component={QuestionSubmitPage} />
-    </div>
+    <Route exact path={ROUTES.LANDING} component={LandingPage} />
+    <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+    <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+    <Route path={ROUTES.QUESTION_LEADERBOAD} component={QuestionLeaderboardPage} />
+    <Route
+      path={ROUTES.PASSWORD_FORGET}
+      component={PasswordForgetPage}
+    />
+    <Route path={ROUTES.HOME} component={HomePage} />
+    <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+    <Route path={ROUTES.ADMIN} component={AdminPage} />
+    <Route path={ROUTES.ADD_QUESTION} component={QuestionSubmitPage} />
+
   </Router>
 )
 

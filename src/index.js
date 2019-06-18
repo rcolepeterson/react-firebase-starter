@@ -1,7 +1,7 @@
 /**
  * https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/#react-firebase-realtime-database
  */
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Firebase, { FirebaseContext } from './components/Firebase';
 import './index.css';

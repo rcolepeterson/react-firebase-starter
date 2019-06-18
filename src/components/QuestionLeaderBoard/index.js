@@ -38,8 +38,18 @@ class QuestionLeaderBoardPage extends Component {
         this.setState({ loading: true });
         this.props.firebase.questions().then((questions) => {
             console.log('got em', questions);
-            this.setState({ loading: false, questions: questions });
+            //this.setState({ loading: false, questions: questions });
         });
+        let doc = this.props.firebase.getdb().collection('questions');
+        let observer = doc.onSnapshot(docSnapshot => {
+            console.log(`Received doc snapshot: ${docSnapshot}`);
+            this.setState({ loading: false, questions: docSnapshot.docs });
+            // ...
+        }, err => {
+            console.log(`Encountered error: ${err}`);
+        });
+
+
 
     }
     componentWillUnmount() {
