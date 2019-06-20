@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {withFirebase} from '../Firebase';
 import Button from '@material-ui/core/Button';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import IconButton from '@material-ui/core/IconButton';
 
 const QuestionList = ({
   questions,
@@ -23,19 +25,19 @@ const QuestionList = ({
           votedFor = votes.filter(voter => voter === currentUserUid).length > 0;
         }
         return (
-          <li key={id}>
-            <p>
+          <li style={{textAlign: 'left'}} key={id}>
+            <h2>
               <strong>{questionText}</strong>
-              <br />
-              {d.toString()}
-            </p>
-            <button
+            </h2>
+            <p className="text-muted">{d.toLocaleString()}</p>
+            {/* <button
               onClick={() => {
                 deleteFunction(id);
               }}>
               Delete
-            </button>
-            <Button
+            </button> */}
+
+            {/* <Button
               style={{opacity: votedFor ? 1 : 0.2}}
               onClick={() => {
                 if (votedFor) {
@@ -45,7 +47,20 @@ const QuestionList = ({
                 }
               }}>
               Likes
-            </Button>
+            </Button> */}
+            <IconButton
+              style={{opacity: votedFor ? 1 : 0.2}}
+              onClick={() => {
+                if (votedFor) {
+                  doDownVoteQuestion(id);
+                } else {
+                  doUpVoteQuestion(id);
+                }
+              }}
+              edge="start"
+              color="inherit">
+              <ThumbUpIcon />
+            </IconButton>
             {votes ? votes.length : 0}
           </li>
         );

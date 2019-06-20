@@ -50,6 +50,7 @@ class QuestionFormBase extends Component {
           <form onSubmit={this.onSubmit}>
             <TextField
               variant="outlined"
+              multiline
               margin="normal"
               required
               fullWidth
