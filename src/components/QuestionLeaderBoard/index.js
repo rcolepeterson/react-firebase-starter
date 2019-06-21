@@ -3,6 +3,7 @@ import {withFirebase} from '../Firebase';
 import Button from '@material-ui/core/Button';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import IconButton from '@material-ui/core/IconButton';
+import {Loader} from '../loaders';
 
 const QuestionList = ({
   questions,
@@ -14,7 +15,12 @@ const QuestionList = ({
   return (
     <ul>
       {questions.map(question => {
-        const {questionText, votes, created} = question.data();
+        const {
+          questionText,
+          votes,
+          created,
+          submittedBy = ''
+        } = question.data();
 
         var d = new Date();
         d.setTime(created.seconds * 1000);
@@ -29,7 +35,9 @@ const QuestionList = ({
             <h2>
               <strong>{questionText}</strong>
             </h2>
-            <p className="text-muted">{d.toLocaleString()}</p>
+
+            <p className="text-muted">Submitted by {submittedBy}</p>
+            <p className="text-muted timeStamp">{d.toLocaleString()}</p>
             {/* <button
               onClick={() => {
                 deleteFunction(id);
@@ -72,28 +80,47 @@ const QuestionList = ({
 class QuestionLeaderBoardPage extends Component {
   constructor(props) {
     super(props);
-    this.sortByTime = this.sortByTime.bind(this);
-    this.sortByVotes = this.sortByVotes.bind(this);
+    this.doSortByTime = this.doSortByTime.bind(this);
+    this.doSortByVotes = this.doSortByVotes.bind(this);
     this.state = {
       loading: false,
-      questions: []
+      questions: [],
+      orderBy: this.props.firebase.orderQuestionsBy || 'votes'
     };
   }
 
-  sortByTime() {
-    let questions = this.state.questions.sort((a, b) => {
-      return a.data().created.seconds < b.data().created.seconds ? 1 : -1;
+  doSortByTime() {
+    let questions = this.sortByTime(this.state.questions);
+    this.props.firebase.orderQuestionsBy = 'time';
+    this.setState({
+      loading: false,
+      questions: questions,
+      orderBy: this.props.firebase.orderQuestionsBy
     });
-    this.setState({loading: false, questions: questions});
   }
 
-  sortByVotes() {
-    let questions = this.state.questions.sort((a, b) => {
+  doSortByVotes() {
+    let questions = this.sortByVotes(this.state.questions);
+    this.props.firebase.orderQuestionsBy = 'votes';
+    this.setState({
+      loading: false,
+      questions: questions,
+      orderBy: this.props.firebase.orderQuestionsBy
+    });
+  }
+
+  sortByTime(questions) {
+    return questions.sort((a, b) => {
+      return a.data().created.seconds < b.data().created.seconds ? 1 : -1;
+    });
+  }
+
+  sortByVotes(questions) {
+    return questions.sort((a, b) => {
       let aVotes = a.data().votes ? a.data().votes.length : 0;
       let bVotes = b.data().votes ? b.data().votes.length : 0;
       return aVotes < bVotes ? 1 : -1;
     });
-    this.setState({loading: false, questions: questions});
   }
 
   componentDidMount() {
@@ -102,7 +129,11 @@ class QuestionLeaderBoardPage extends Component {
 
     this.unsubscribe = doc.onSnapshot(
       docSnapshot => {
-        this.setState({loading: false, questions: docSnapshot.docs});
+        let questions =
+          this.state.orderBy === 'time'
+            ? this.sortByTime(docSnapshot.docs)
+            : this.sortByVotes(docSnapshot.docs);
+        this.setState({loading: false, questions: questions});
       },
       err => {
         console.log(`Encountered error: ${err}`);
@@ -127,9 +158,17 @@ class QuestionLeaderBoardPage extends Component {
     return (
       <div>
         <h1>Leaderboard</h1>
-        {loading && <div>Loading ...</div>}
-        <Button onClick={this.sortByTime}>Sorty By Time</Button>
-        <Button onClick={this.sortByVotes}>Sorty By Votes</Button>
+        {loading && <Loader />}
+        <Button
+          variant={this.state.orderBy === 'time' ? 'outlined' : 'text'}
+          onClick={this.doSortByTime}>
+          Sorty By Time
+        </Button>
+        <Button
+          variant={this.state.orderBy !== 'time' ? 'outlined' : 'text'}
+          onClick={this.doSortByVotes}>
+          Sorty By Votes
+        </Button>
         <QuestionList
           questions={questions}
           currentUserUid={currentUserUid}

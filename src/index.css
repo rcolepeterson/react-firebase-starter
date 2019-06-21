@@ -31,3 +31,8 @@ li p {
 .text-muted {
   color: #6c757d !important;
 }
+
+.timeStamp {
+  margin-top: 3px;
+  font-size: 12px;
+}

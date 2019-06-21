@@ -15,11 +15,8 @@ import * as ROUTES from '../../constants/routes';
 import {Grid} from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-//import MenuIcon from '@material-ui/icons/Menu';
 import {withAuthentication} from '../Session';
-//import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-//import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles(theme => ({
   root: {

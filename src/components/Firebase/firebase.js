@@ -19,6 +19,8 @@ class Firebase {
     this.db = firebase.firestore();
   }
 
+  orderQuestionsBy = 'votes';
+
   // *** Auth API ***
 
   doCreateUserWithEmailAndPassword = (email, password) =>
@@ -62,6 +64,7 @@ class Firebase {
     return this.db.collection('questions').add({
       questionText,
       uid: this.currentUser().uid,
+      submittedBy: this.currentUser().email,
       created: firebase.firestore.Timestamp.fromDate(new Date())
     });
   };
