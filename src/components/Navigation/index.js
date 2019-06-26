@@ -96,7 +96,7 @@ const NavigationAuth = ({handleClose}) => (
 const NavigationNonAuth = () => (
   <>
     <MenuItem component={Link} to={ROUTES.LANDING}>
-      Landing
+      Home
     </MenuItem>
     <MenuItem component={Link} to={ROUTES.SIGN_IN}>
       Sign In
