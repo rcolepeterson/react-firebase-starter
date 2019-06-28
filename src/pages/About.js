@@ -16,14 +16,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Landing = () => {
+const About = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <h1>Town Hall</h1>
-      <h3>Crowd Sourcing Q &amp; A</h3>
+      <h1>A PAGE</h1>
+      {/* <h1>Town Hall</h1> */}
+      {/* <h3>Crowd Sourcing Q &amp; A</h3> */}
     </div>
   );
 };
 
-export default Landing;
+export default About;

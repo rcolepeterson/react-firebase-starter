@@ -18,7 +18,7 @@ ul {
 }
 
 li {
-  margin: 20px;
+  margin: 20px 0 0 0;
   padding: 10px;
   max-width: 100%;
   border: 1px solid #999;
@@ -36,3 +36,9 @@ li p {
   margin-top: 3px;
   font-size: 12px;
 }
+
+/* inputRoot {
+  'label[data-shrink=false] + & ::-webkit-input-placeholder': {
+    opacity: '0.5 !important';
+  }
+} */

@@ -2,8 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
-import {AuthUserContext} from '../Session';
-//import Button from '@material-ui/core/Button';
+import {AuthUserContext} from '../../Session';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -73,33 +72,44 @@ const NavigationAuth = ({handleClose}) => (
       Home
     </MenuItem>
 
+    <MenuItem onClick={handleClose} component={Link} to={ROUTES.ACCOUNT}>
+      Account
+    </MenuItem>
+    <MenuItem onClick={handleClose} component={Link} to={ROUTES.ADMIN}>
+      Admin
+    </MenuItem>
+    <MenuItem onClick={handleClose} component={Link} to={ROUTES.ADD_QUESTION}>
+      Ask Question
+    </MenuItem>
     <MenuItem
       onClick={handleClose}
       component={Link}
       to={ROUTES.QUESTION_LEADERBOAD}>
       Leaderboard
     </MenuItem>
-
-    {/* <MenuItem component={Link} to={ROUTES.ACCOUNT}>
-      Account
-    </MenuItem> */}
-    {/* <MenuItem component={Link} to={ROUTES.ADMIN}>
-      Admin
-    </MenuItem> */}
-    <MenuItem onClick={handleClose} component={Link} to={ROUTES.ADD_QUESTION}>
-      Ask Question
+    <MenuItem onClick={handleClose} component={Link} to={ROUTES.ABOUT}>
+      About
     </MenuItem>
     <SignOutButton />
   </>
 );
 
-const NavigationNonAuth = () => (
+const NavigationNonAuth = ({handleClose}) => (
   <>
-    <MenuItem component={Link} to={ROUTES.LANDING}>
+    <MenuItem onClick={handleClose} component={Link} to={ROUTES.LANDING}>
       Home
     </MenuItem>
-    <MenuItem component={Link} to={ROUTES.SIGN_IN}>
+    <MenuItem
+      onClick={handleClose}
+      component={Link}
+      to={ROUTES.QUESTION_LEADERBOAD}>
+      Leaderboard
+    </MenuItem>
+    <MenuItem onClick={handleClose} component={Link} to={ROUTES.SIGN_IN}>
       Sign In
+    </MenuItem>
+    <MenuItem onClick={handleClose} component={Link} to={ROUTES.ABOUT}>
+      About
     </MenuItem>
   </>
 );

@@ -15,10 +15,10 @@ const useStyles = makeStyles(theme => ({
 
 const HomePage = () => {
   const classes = useStyles();
+  console.log('home page');
   return (
     <div className={classes.root}>
-      <h1>Town Hall</h1>
-      <h3>Crowd Sourcing Q &amp; A</h3>
+      <h1>H PAGE</h1>
     </div>
   );
 };
