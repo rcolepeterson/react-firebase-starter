@@ -22,6 +22,7 @@ li {
   padding: 10px;
   max-width: 100%;
   border: 1px solid #999;
+  border-radius: 8px;
 }
 
 li p {

@@ -39,6 +39,7 @@ class Firebase {
     this.db = firebase.firestore();
   }
 
+  // default value for sorting the questions on the leader board page.
   orderQuestionsBy = 'votes';
 
   // *** Auth API ***
