@@ -15,12 +15,12 @@ const QuestionLeaderBoardPage = ({firebase}) => {
 
   const {open} = state;
 
-  const updateState = newState => {
-    setState(previousValue => ({
-      ...previousValue,
-      newState
-    }));
-  };
+  // const updateState = newState => {
+  //   setState(previousValue => ({
+  //     ...previousValue,
+  //     newState
+  //   }));
+  // };
 
   const doSortByTime = () => {
     let questions = sortByTime(state.questions);

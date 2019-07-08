@@ -1,18 +1,19 @@
 import React, {useState} from 'react';
 import {withRouter} from 'react-router-dom';
 import {compose} from 'recompose';
-
+import {Link} from 'react-router-dom';
 import {SignUpLink} from './SignUp';
+import {PasswordForgetLink} from './PasswordForget';
 import {withFirebase} from '../Firebase';
 import * as ROUTES from '../constants/routes';
-import Button from '@material-ui/core/Button';
-import {FormControl, TextField} from '@material-ui/core';
+import {FormControl, TextField, Button} from '@material-ui/core';
 
 const SignInPage = () => (
   <div>
     <h1>Sign In</h1>
     <SignInForm />
     <SignUpLink />
+    <PasswordForgetLink />
   </div>
 );
 
@@ -112,6 +113,12 @@ const SignInFormBase = ({history, firebase}) => {
     </FormControl>
   );
 };
+
+export const SignInLink = () => (
+  <p>
+    Have an account? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+  </p>
+);
 
 const SignInForm = compose(
   withRouter,

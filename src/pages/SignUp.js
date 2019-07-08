@@ -4,6 +4,8 @@ import {withFirebase} from '../Firebase';
 import * as ROUTES from '../constants/routes';
 import {compose} from 'recompose';
 import {Button, TextField} from '@material-ui/core';
+import {SignInLink} from './SignIn';
+import {PasswordForgetLink} from './PasswordForget';
 
 const INITIAL_STATE = {
   username: '',
@@ -145,6 +147,8 @@ const SignUpFormBase = ({history, firebase}) => {
         </Button>
         {error && <p>{error.message}</p>}
       </form>
+      <SignInLink />
+      <PasswordForgetLink />
     </div>
   );
 };

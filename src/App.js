@@ -7,7 +7,7 @@ import SignUpPage from './pages/SignUp';
 import SignInPage from './pages/SignIn';
 import QuestionSubmitPage from './pages/QuestionSubmit';
 import QuestionLeaderboardPage from './pages/QuestionLeaderBoard';
-//import PasswordForgetPage from './pages/PasswordForget';
+import PasswordForgetPage from './pages/PasswordForget';
 import HomePage from './pages/Home';
 import AboutPage from './pages/About';
 import AccountPage from './pages/Account';
@@ -56,7 +56,7 @@ const App = () => {
           path={ROUTES.QUESTION_LEADERBOAD}
           component={QuestionLeaderboardPage}
         />
-        {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
+        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
         <Route path={ROUTES.HOME} component={HomePage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
