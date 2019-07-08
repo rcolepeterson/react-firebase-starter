@@ -62,7 +62,7 @@ const QuestionLeaderBoardPage = ({firebase}) => {
     doc.onSnapshot(
       docSnapshot => {
         let questions =
-          state.orderBy === 'time'
+          firebase.orderQuestionsBy === 'time'
             ? sortByTime(docSnapshot.docs)
             : sortByVotes(docSnapshot.docs);
         setState(previousValue => ({
