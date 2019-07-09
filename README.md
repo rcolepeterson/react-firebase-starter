@@ -39,3 +39,10 @@ See the section about
 more information.
 
 ## Deploy
+
+`firebase deploy`
+
+Project Console:
+https://console.firebase.google.com/project/townhall-c7323/overview
+
+Hosting URL: https://townhall-c7323.firebaseapp.com

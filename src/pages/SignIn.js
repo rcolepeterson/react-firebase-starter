@@ -102,7 +102,6 @@ const SignInFormBase = ({history, firebase}) => {
       <br></br>
       <Button
         onClick={() => {
-          console.log('test');
           setState(TEST_STATE);
         }}
         fullWidth

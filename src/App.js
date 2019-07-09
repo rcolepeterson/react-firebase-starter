@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import {makeStyles} from '@material-ui/core/styles';
 import Navigation from './components/Navigation';
+import AccountName from './components/AccountName';
 import LandingPage from './pages/Landing';
 import SignUpPage from './pages/SignUp';
 import SignInPage from './pages/SignIn';
@@ -13,13 +13,15 @@ import AboutPage from './pages/About';
 import AccountPage from './pages/Account';
 import AdminPage from './pages/Admin';
 import * as ROUTES from './constants/routes';
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import {withAuthentication} from './Session';
-import Typography from '@material-ui/core/Typography';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  CssBaseline,
+  Container,
+  makeStyles
+} from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   }
 }));
-//  <Navigation />
+
 const App = () => {
   const classes = useStyles();
   return (
@@ -43,6 +45,7 @@ const App = () => {
           <Typography variant="h6" className={classes.title}>
             APP
           </Typography>
+          <AccountName />
         </Toolbar>
       </AppBar>
       <Container justify="center" align="center" component="main">

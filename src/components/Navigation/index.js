@@ -75,9 +75,9 @@ const NavigationAuth = ({handleClose}) => (
     <MenuItem onClick={handleClose} component={Link} to={ROUTES.ACCOUNT}>
       Account
     </MenuItem>
-    <MenuItem onClick={handleClose} component={Link} to={ROUTES.ADMIN}>
+    {/* <MenuItem onClick={handleClose} component={Link} to={ROUTES.ADMIN}>
       Admin
-    </MenuItem>
+    </MenuItem> */}
     <MenuItem onClick={handleClose} component={Link} to={ROUTES.ADD_QUESTION}>
       Ask Question
     </MenuItem>

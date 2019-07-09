@@ -6,6 +6,7 @@ import {compose} from 'recompose';
 import {Button, TextField} from '@material-ui/core';
 import {SignInLink} from './SignIn';
 import {PasswordForgetLink} from './PasswordForget';
+import queryString from 'query-string';
 
 const INITIAL_STATE = {
   username: '',
@@ -30,7 +31,7 @@ const SignUpPage = () => (
   </div>
 );
 
-const SignUpFormBase = ({history, firebase}) => {
+const SignUpFormBase = ({history, firebase, location}) => {
   const [state, setState] = useState(INITIAL_STATE);
 
   const onSubmit = event => {
@@ -67,6 +68,8 @@ const SignUpFormBase = ({history, firebase}) => {
     setState(prevState => ({...prevState, [name]: value}));
   };
 
+  const isDebug = _ => queryString.parse(location.search).debug;
+
   const {username, email, passwordOne, passwordTwo, error} = state;
 
   const isInvalid =
@@ -77,16 +80,18 @@ const SignUpFormBase = ({history, firebase}) => {
 
   return (
     <div>
-      <Button
-        onClick={() => {
-          console.log('test');
-          setState(TEST_STATE);
-        }}
-        fullWidth
-        variant="contained"
-        color="primary">
-        test
-      </Button>
+      {isDebug() && (
+        <Button
+          onClick={() => {
+            console.log('test');
+            setState(TEST_STATE);
+          }}
+          fullWidth
+          variant="contained"
+          color="primary">
+          test
+        </Button>
+      )}
       <form onSubmit={onSubmit}>
         <TextField
           name="username"
