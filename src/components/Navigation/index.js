@@ -108,6 +108,9 @@ const NavigationNonAuth = ({handleClose}) => (
     <MenuItem onClick={handleClose} component={Link} to={ROUTES.SIGN_IN}>
       Sign In
     </MenuItem>
+    <MenuItem onClick={handleClose} component={Link} to={ROUTES.SIGN_UP}>
+      Sign Up
+    </MenuItem>
     <MenuItem onClick={handleClose} component={Link} to={ROUTES.ABOUT}>
       About
     </MenuItem>

@@ -17,7 +17,7 @@ ul {
   padding: 0;
 }
 
-li {
+.leader-board li {
   margin: 20px 0 0 0;
   padding: 10px;
   max-width: 100%;
@@ -27,7 +27,15 @@ li {
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
 
-li p {
+.link-list {
+  margin-top: 40px;
+}
+
+.link-list a {
+  margin-top: 20px;
+}
+
+.leader-board li p {
   margin-bottom: 0;
 }
 
@@ -39,9 +47,3 @@ li p {
   margin-top: 3px;
   font-size: 12px;
 }
-
-/* inputRoot {
-  'label[data-shrink=false] + & ::-webkit-input-placeholder': {
-    opacity: '0.5 !important';
-  }
-} */

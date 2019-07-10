@@ -1,24 +1,32 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+//import {makeStyles} from '@material-ui/core/styles';
 import {withAuthorization} from '../Session';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    'margin-top': '60px',
-    ' & h1': {
-      'font-size': '77px',
-      color: '#ccc',
-      'margin-bottom': 0
-    }
-  }
-}));
+import {Link} from 'react-router-dom';
+import * as ROUTES from '../constants/routes';
+import {Button} from '@material-ui/core';
 
 const HomePage = () => {
-  const classes = useStyles();
-  console.log('home page');
   return (
-    <div className={classes.root}>
-      <h1>H PAGE</h1>
+    <div className="link-list">
+      <Button
+        fullWidth
+        variant="outlined"
+        component={Link}
+        to={ROUTES.ADD_QUESTION}>
+        Ask a question
+      </Button>
+
+      <Button
+        fullWidth
+        variant="outlined"
+        component={Link}
+        to={ROUTES.QUESTION_LEADERBOAD}>
+        Leaderboard
+      </Button>
+
+      <Button fullWidth variant="outlined" component={Link} to={ROUTES.ABOUT}>
+        About
+      </Button>
     </div>
   );
 };

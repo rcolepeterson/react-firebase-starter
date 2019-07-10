@@ -103,8 +103,9 @@ const QuestionLeaderBoardPage = ({firebase}) => {
   }
 
   return (
-    <div>
-      <h1>LB{state.orderBy}</h1>
+    <div className="leader-board">
+      {/* <h1>LB{state.orderBy}</h1> */}
+      <h1>Leaderboard</h1>
       {state.loading && <Loader />}
       <Button
         variant={state.orderBy === 'time' ? 'outlined' : 'text'}

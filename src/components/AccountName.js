@@ -1,11 +1,11 @@
 import React from 'react';
-import {AuthUserContext, withAuthorization} from '../Session';
+import {AuthUserContext} from '../Session';
 const AccountName = () => (
   <AuthUserContext.Consumer>
     {authUser => (
       <div>
         {/* <p>{authUser.username}</p> */}
-        <p>{authUser.email}</p>
+        <p>{authUser && authUser.email}</p>
         {/* <p>{JSON.stringify(authUser)}</p> */}
         {/* <PasswordForgetForm />
         <PasswordChangeForm /> */}
@@ -14,6 +14,7 @@ const AccountName = () => (
   </AuthUserContext.Consumer>
 );
 
-const condition = authUser => !!authUser;
+// const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(AccountName);
+//export default withAuthorization(condition)(AccountName);
+export default AccountName;

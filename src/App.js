@@ -1,7 +1,8 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Navigation from './components/Navigation';
 import AccountName from './components/AccountName';
+import {APP_NAME} from './constants/strings';
 import LandingPage from './pages/Landing';
 import SignUpPage from './pages/SignUp';
 import SignInPage from './pages/SignIn';
@@ -43,7 +44,14 @@ const App = () => {
         <Toolbar>
           <Navigation></Navigation>
           <Typography variant="h6" className={classes.title}>
-            APP
+            <Link
+              to={ROUTES.LANDING}
+              style={{
+                color: 'white',
+                textDecoration: 'none'
+              }}>
+              {APP_NAME}
+            </Link>
           </Typography>
           <AccountName />
         </Toolbar>
