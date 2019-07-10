@@ -48,7 +48,7 @@ ul {
   font-size: 12px;
 }
 
-@media (max-width: 330px) {
+@media (max-width: 380px) {
   h1 {
     font-size: 62px !important;
   }
