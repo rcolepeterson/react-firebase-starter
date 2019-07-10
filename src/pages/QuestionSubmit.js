@@ -37,7 +37,7 @@ const QuestionFormPage = ({history, firebase}) => {
     <AuthUserContext.Consumer>
       {authUser => (
         <>
-          <h1>Ask a Question</h1>
+          <h2>Ask a Question</h2>
           <FormControl>
             <form onSubmit={onSubmit}>
               <TextField
