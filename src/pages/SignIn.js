@@ -99,11 +99,12 @@ const SignInFormBase = ({history, firebase}) => {
 
         {error && <p>{error.message}</p>}
       </form>
-      <br></br>
+
       <Button
         onClick={() => {
           setState(TEST_STATE);
         }}
+        style={{marginTop: 10}}
         fullWidth
         variant="contained"
         color="primary">
