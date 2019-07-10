@@ -40,7 +40,7 @@ class Firebase {
   }
 
   // default value for sorting the questions on the leader board page.
-  orderQuestionsBy = 'votes';
+  orderQuestionsBy = 'time';
 
   // *** Auth API ***
 
