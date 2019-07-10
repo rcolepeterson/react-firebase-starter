@@ -1,4 +1,4 @@
-export const ABOUT = `The Town Square app is used for crowd sourcing questions to be asked in a town hall setting.<br /><br />
+export const ABOUT = `The Town Hall app is used for crowd sourcing questions to be asked in a town hall setting.<br /><br />
 
   Before a company meeting, users can submit questions and vote on other user's questions.<br />
   The questions are displayed in a leader board and can be sorted by the associated number of votes.<br />
