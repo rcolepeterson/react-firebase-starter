@@ -19,7 +19,12 @@ const AdminPage = ({firebase}) => {
           console.log('Error getting documents: ', error);
         });
     };
-    getUers();
+    // https://www.robinwieruch.de/react-firebase-authorization-roles-permissions/
+    firebase.isAdmin().then(b => {
+      b === true
+        ? getUers()
+        : updateState(prevstate => ({...prevstate, loading: false}));
+    });
   }, [firebase]);
 
   return (

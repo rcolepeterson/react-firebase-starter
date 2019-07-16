@@ -69,6 +69,21 @@ class Firebase {
   currentUser = () => {
     return this.auth.currentUser;
   };
+  // https://www.robinwieruch.de/react-firebase-authorization-roles-permissions/
+  isAdmin = () => {
+    const uid = this.currentUser().uid;
+    let usersRef = this.getdb().collection('users');
+    // Create a query against the collection
+    return usersRef
+      .where('isAdmin', '==', true)
+      .where('uid', '==', uid)
+      .get()
+      .then(value => {
+        //console.log('value', value.docs);
+        //console.log('value', value.docs[0].data());
+        return value.docs.length > 0;
+      });
+  };
 
   // *** Question API ***
   //   questions = () =>
