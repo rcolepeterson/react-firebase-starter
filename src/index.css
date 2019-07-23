@@ -53,3 +53,15 @@ ul {
     font-size: 62px !important;
   }
 }
+
+/* hamburger menu */
+#root > header > div > div:nth-child(1) > button {
+  margin-right: 0px;
+}
+
+/* top menu user email*/
+@media (max-width: 380px) {
+  #root > header > div > div:nth-child(3) > p {
+    font-size: 11px;
+  }
+}

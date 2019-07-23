@@ -43,6 +43,13 @@ more information.
 `firebase deploy`
 
 Project Console:
+
+Prod
+
 https://console.firebase.google.com/project/townhall-c7323/overview
+
+Dev
+
+https://console.firebase.google.com/u/0/project/townhall-dev-10280/overview
 
 Hosting URL: https://townhall-c7323.firebaseapp.com
