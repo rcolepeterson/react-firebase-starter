@@ -1,14 +1,35 @@
 import React from 'react';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import {makeStyles} from '@material-ui/core/styles';
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1),
+    float: 'right'
+  },
+  leftIcon: {
+    marginRight: theme.spacing(1)
+  },
+  rightIcon: {
+    marginLeft: theme.spacing(1)
+  },
+  iconSmall: {
+    fontSize: 20
+  }
+}));
 
 const QuestionList = ({
   questions = [],
   doUpVoteQuestion,
   doDownVoteQuestion,
   currentUserUid,
-  displayNotLoggedInMessage
+  displayNotLoggedInMessage,
+  deleteFunction,
+  isAdmin
 }) => {
+  const classes = useStyles();
   return (
     <ul>
       {questions.map(question => {
@@ -55,6 +76,27 @@ const QuestionList = ({
               <ThumbUpIcon />
             </IconButton>
             {votes ? votes.length : 0}
+            {isAdmin && (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  if (!currentUserUid) {
+                    displayNotLoggedInMessage({
+                      vertical: 'bottom',
+                      horizontal: 'center'
+                    });
+                    return;
+                  }
+
+                  deleteFunction(id);
+                }}
+                color="secondary"
+                size="small"
+                className={classes.button}>
+                Delete
+                <DeleteIcon className={classes.rightIcon} />
+              </Button>
+            )}
           </li>
         );
       })}

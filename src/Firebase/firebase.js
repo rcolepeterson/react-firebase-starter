@@ -79,8 +79,6 @@ class Firebase {
       .where('uid', '==', uid)
       .get()
       .then(value => {
-        //console.log('value', value.docs);
-        //console.log('value', value.docs[0].data());
         return value.docs.length > 0;
       });
   };

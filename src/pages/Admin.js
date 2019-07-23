@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {AuthUserContext, withAuthorization} from '../Session';
 import {Loader} from '../components/Loaders';
 
-const AdminPage = ({firebase}) => {
+const AdminPage = ({firebase, test}) => {
   const [state, updateState] = useState({loading: true, users: []});
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const AdminPage = ({firebase}) => {
         .get()
         .then(querySnapshot => {
           const users = querySnapshot.docs.map(doc => doc.data());
-          updateState({loading: false, users});
+          updateState({loading: false, users, isAdmin: true});
         })
         .catch(function(error) {
           console.log('Error getting documents: ', error);
@@ -23,7 +23,11 @@ const AdminPage = ({firebase}) => {
     firebase.isAdmin().then(b => {
       b === true
         ? getUers()
-        : updateState(prevstate => ({...prevstate, loading: false}));
+        : updateState(prevstate => ({
+            ...prevstate,
+            loading: false,
+            isAdmin: false
+          }));
     });
   }, [firebase]);
 
@@ -31,7 +35,10 @@ const AdminPage = ({firebase}) => {
     <AuthUserContext.Consumer>
       {authUser => (
         <div>
-          <h1>Admin</h1>
+          <h1 style={{marginBottom: -10}}>Admin</h1>
+          <p style={{marginBottom: 40}}>
+            {authUser.email} {state.isAdmin ? 'is an admin' : 'is not an admin'}
+          </p>
           {state.loading && <Loader />}
           <UserList users={state.users} />
         </div>

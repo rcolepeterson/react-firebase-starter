@@ -78,11 +78,13 @@ const QuestionLeaderBoardPage = ({firebase}) => {
 
     firebase.getAuth().onAuthStateChanged(user => {
       if (user) {
-        // User is signed in.
-        setState(previousValue => ({
-          ...previousValue,
-          currentUserUid: user.uid
-        }));
+        firebase.isAdmin().then(value => {
+          setState(previousValue => ({
+            ...previousValue,
+            currentUserUid: user.uid,
+            isAdmin: value
+          }));
+        });
       } else {
         setState(previousValue => ({
           ...previousValue,
@@ -124,6 +126,7 @@ const QuestionLeaderBoardPage = ({firebase}) => {
         doDownVoteQuestion={firebase.doDownVoteQuestion}
         deleteFunction={firebase.doDeleteQuestion}
         displayNotLoggedInMessage={handleClick}
+        isAdmin={state.isAdmin}
       />
       <Snackbar
         anchorOrigin={{
