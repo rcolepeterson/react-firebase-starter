@@ -7,6 +7,7 @@ import LandingPage from './pages/Landing';
 import SignUpPage from './pages/SignUp';
 import SignInPage from './pages/SignIn';
 import QuestionSubmitPage from './pages/QuestionSubmit';
+import QuestionEditPage from './pages/QuestionEdit';
 import QuestionLeaderboardPage from './pages/QuestionLeaderBoard';
 import PasswordForgetPage from './pages/PasswordForget';
 import HomePage from './pages/Home';
@@ -72,6 +73,7 @@ const App = () => {
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.ADD_QUESTION} component={QuestionSubmitPage} />
+        <Route path={ROUTES.EDIT_QUESTION} component={QuestionEditPage} />
       </Container>
     </Router>
   );

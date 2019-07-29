@@ -109,6 +109,19 @@ class Firebase {
       .doc(id)
       .delete();
   };
+  doGetSingleQuestion = id => {
+    return this.db.collection('questions').doc(id);
+  };
+  doEditQuestion = (questionid, value) => {
+    this.orderQuestionsBy = 'time';
+    return this.db
+      .collection('questions')
+      .doc(questionid)
+      .update({
+        questionText: value,
+        created: firebase.firestore.Timestamp.fromDate(new Date())
+      });
+  };
 
   doUpVoteQuestion = questionid => {
     const docRef = this.db.collection('questions').doc(questionid);

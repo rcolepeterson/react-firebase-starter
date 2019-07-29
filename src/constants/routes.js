@@ -6,5 +6,6 @@ export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
 export const ADD_QUESTION = '/question-submit';
+export const EDIT_QUESTION = '/question-edit/:questionId';
 export const QUESTION_LEADERBOAD = '/question-leaderboard';
 export const ABOUT = '/about';

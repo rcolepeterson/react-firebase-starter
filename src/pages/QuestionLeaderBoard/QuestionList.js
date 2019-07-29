@@ -1,9 +1,10 @@
-import React from 'react';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 import {makeStyles} from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import {Link} from 'react-router-dom';
+import React from 'react';
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
@@ -37,6 +38,7 @@ const QuestionList = ({
           questionText,
           votes,
           created,
+          uid,
           submittedBy = ''
         } = question.data();
 
@@ -44,10 +46,12 @@ const QuestionList = ({
         d.setTime(created.seconds * 1000);
 
         const {id} = question;
+
         let votedFor = false;
         if (votes) {
           votedFor = votes.filter(voter => voter === currentUserUid).length > 0;
         }
+        let isOwner = currentUserUid === uid;
         return (
           <li style={{textAlign: 'left'}} key={id}>
             <h2>
@@ -95,6 +99,14 @@ const QuestionList = ({
                 className={classes.button}>
                 Delete
                 <DeleteIcon className={classes.rightIcon} />
+              </Button>
+            )}
+            {isOwner && (
+              <Button
+                style={{float: 'right', marginTop: 6}}
+                component={Link}
+                to={`/question-edit/${id}`}>
+                Edit
               </Button>
             )}
           </li>
