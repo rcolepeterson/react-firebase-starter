@@ -51,7 +51,8 @@ const QuestionList = ({
         if (votes) {
           votedFor = votes.filter(voter => voter === currentUserUid).length > 0;
         }
-        let isOwner = currentUserUid === uid;
+        let isOwner =
+          currentUserUid === uid && submittedBy !== 'anonymous@zaaz.com';
         return (
           <li style={{textAlign: 'left'}} key={id}>
             <h2>
