@@ -17,7 +17,7 @@ const QuestionFormPage = ({history, firebase, match}) => {
     doc.get().then(
       docSnapshot => {
         let question = docSnapshot.data();
-        console.log(question.uid, firebase.currentUser().uid);
+
         if (question.uid !== firebase.currentUser().uid) {
           history.push(ROUTES.QUESTION_LEADERBOAD);
         }
